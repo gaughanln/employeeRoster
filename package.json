@@ -1,0 +1,26 @@
+{
+  "name": "employeeroster",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gaughanln/employeeRoster.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gaughanln/employeeRoster/issues"
+  },
+  "homepage": "https://github.com/gaughanln/employeeRoster#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
+}
