@@ -11,7 +11,6 @@ const Manager = require('./lib/Manager')
 
 // link emails + github 
 
-
 const questions = [
   {
     type: "input",
@@ -32,100 +31,92 @@ const questions = [
       "What is their email address?",
   },
   {
-    type: "input",
+    type: "list",
     name: "role",
     message:
       "What is the employee's role at the company?",
     choices: ["Manager", "Engineer", "Intern"]
   },
-
 ]
 
-const employeesArray = []
-//or to finish building my team
+let employeesArray = []
 
 // FUNCTION TO INITIALIZE THE APP
-const createEmployee = () => {
-  inquirer
-    .prompt(questions)
-    .then((answers) => {
-      let employee;
+const addEmployee = async () => {
+  const answers = await inquirer.prompt(questions);
+    let employee;
 
-      if (answers.role === 'Manager') {
-        employee = new Manager(
-          answers.name,
-          answers.id,
-          answers.email,
-          inquirer.prompt([
-            {
-              type: "input",
-              name: "officeNumber",
-              message: "What is the manager's office number?"
-            }
-          ]).then(officeNumberAnswer => {
-            return officeNumberAnswer.officeNumber;
-          })
-        );
+    if (answers.role === "Manager") {
+      const officeNumberAnswer = await inquirer.prompt([
+        {
+          type: "input",
+          name: "officeNumber",
+          message: "What is the manager's office number?"
+        }
+      ]);
+      employee = new Manager(
+        answers.name,
+        answers.id,
+        answers.email,
+        officeNumberAnswer.officeNumber
+      );
+    } else if (answers.role === "Engineer") {
+      const githubAnswer = await inquirer.prompt([
+        {
+          type: "input",
+          name: "github",
+          message: "What is the engineer's Github username?"
+        }
+      ]);
+      employee = new Engineer(
+        answers.name,
+        answers.id,
+        answers.email,
+        githubAnswer.github
+      );
+    } else if (answers.role === "Intern") {
+      const schoolAnswer = await inquirer.prompt([
+        {
+          type: "input",
+          name: "school",
+          message: "What is the intern's school?"
+        }
+      ]);
+      employee = new Intern(
+        answers.name,
+        answers.id,
+        answers.email,
+        schoolAnswer.school
+      );
+    } else {
+      employee = new Employee(answers.name, answers.id, answers.email);
+    }
+    employeesArray.push(employee); //WHY IS IT TELLING ME EMPLOYEES IS NOT DEFINED?
+    
+    // prompting to add another employee or be done
+    const addAnotherEmployee = await inquirer.prompt([
+      {
+        type: "confirm",
+        name: "addAnother",
+        message: "Would you like to add another employee?"
       }
-      else if (answers.role === 'Engineer') {
-        employee = new Engineer(
-          answers.name, 
-          answers.id, 
-          answers.email,
-          inquirer.prompt([
-            {
-            type: "input",
-            name: "github",
-            message: "What is the Engineer's github?",
-          }
-        ]).then((githubAnswer) => {
-            return githubAnswer.github
-          })
-        );
-      }
-      else if (answers.role === 'Intern') {
-        employee = new Intern(
-          answers.name, 
-          answers.id, 
-          answers.email,
-          inquirer.prompt([
-            {
-            type: "input",
-            name: "school",
-            message: "What school does the intern attend?",
-          }
-        ]).then((schoolAnswer) => {
-            return schoolAnswer.school
-          })
-        );
-      }
-      else {
-        employee = new Employee(
-          answers.name, 
-          answers.id, 
-          answers.email)
-      // }
-      return employeesArray.push(employee)
-    })
-    .then(() => {
-      inquirer
-        .prompt([{
-          type: 'confirm',
-          name: 'newEmployee',
-          message: 'Would you like to add another employee?'
-        }])
-        .then((newEmployeeResponse) => {
-          if (newEmployeeResponse.newEmployee) {
-            // createEmployee()
-          }
-          else {
-          console.log(employeesArray)  
-          }
-        })
-    })
-}
+    ]);
+    if (addAnotherEmployee.addAnother) {
+      addEmployee();
+    } 
+    else {
+console.log("test")
+      // fs.writeFile("index.html", JSON.stringify(employees), err => { //the html needs to link to the dist folder?
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     console.log("Success!");
+      //   }
+      // });
+    }
+  };
 console.log(employeesArray)
-createEmployee()
+addEmployee()
 
 
 
