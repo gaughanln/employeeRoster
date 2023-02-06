@@ -3,19 +3,19 @@ module.exports = Engineer
 const engineer = [
   {
     type: "input",
-    name: "engineerName",
+    name: "name",
     message:
       "What is the engineer's name?",
   },
   {
     type: "input",
-    name: "engineerId",
+    name: "id",
     message:
       "What is their employee ID?",
   },
   {
     type: "input",
-    name: "engineerEmail",
+    name: "email",
     message:
       "What is their email address?",
   },
