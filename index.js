@@ -106,13 +106,15 @@ const addEmployee = async () => {
     } 
     else {
 console.log("test")
-      // fs.writeFile("index.html", JSON.stringify(employees), err => { //the html needs to link to the dist folder?
-      //   if (err) {
-      //     console.log(err);
-      //   } else {
-      //     console.log("Success!");
-      //   }
-      // });
+
+// let htmlContent = renderEmployee()
+      fs.writeFile("index.html", JSON.stringify(employeesArray), err => { //the html needs to link to the dist folder?
+        if (err) {
+          console.log(err);
+        } else {
+          console.log("Success!");
+        }
+      });
     }
   };
 console.log(employeesArray)
@@ -120,22 +122,5 @@ addEmployee()
 
 
 
-//       fs.writeFile('.dist/index.html', employee, (err) => {
-//         if (err) console.log(err);
-//         else {
-//           console.log('files written successfully')
-//         }
-//       }
-//       );
-//     });
-// }
 
 
-
-
-
-
-
-// WHEN I decide to finish building my team
-// THEN I exit the application, and the HTML is generated
-// HOW DO I ADD MORE OPTIONS OR AN 'ARE YOU DONE?' OPTION?

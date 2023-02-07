@@ -1,9 +1,8 @@
-const Employee = require('../index')
+const Employee = require('../lib/Employee')
 
 describe('employee', () => {
-it('should return their information when prompted', () => {
+it('should return employee information when prompted', () => {
 
 }) 
  })
 
-module.exports = Employee;
