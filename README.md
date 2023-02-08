@@ -22,7 +22,11 @@ https://user-images.githubusercontent.com/111533986/217568871-0b27c970-6a4e-4ef8
 
 <!-- screenshots -->
 Below are screenshots of the application in use
-![screenshot1](./application/assets/readmeScreenshot.png)
+![screenshot1](./assets/employeeRosterTestScreenshot.png)
+
+![screenshot2](./assets/employeeRosterApplicationScreenshot.png)
+
+![screenshot3](./assets/EmployeeRosterHTMLScreenshot.png)
 
 <!-- link -->
 ## Deployment
