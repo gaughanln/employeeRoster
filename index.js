@@ -4,12 +4,7 @@ const Employee = require('./lib/Employee')
 const Engineer = require('./lib/Engineer')
 const Intern = require('./lib/Intern')
 const Manager = require('./lib/Manager')
-
-
-// WHEN I am prompted for my team members and their information
-// THEN an HTML file is generated that displays a nicely formatted team roster based on user input
-
-// link emails + github 
+const htmlLiteral = require('./src/renderHTML')
 
 const questions = [
   {
@@ -91,7 +86,7 @@ const addEmployee = async () => {
     } else {
       employee = new Employee(answers.name, answers.id, answers.email);
     }
-    employeesArray.push(employee); //WHY IS IT TELLING ME EMPLOYEES IS NOT DEFINED?
+    employeesArray.push(employee); 
     
     // prompting to add another employee or be done
     const addAnotherEmployee = await inquirer.prompt([
@@ -105,10 +100,9 @@ const addEmployee = async () => {
       addEmployee();
     } 
     else {
-console.log("test")
 
 // let htmlContent = renderEmployee()
-      fs.writeFile("index.html", JSON.stringify(employeesArray), err => { //the html needs to link to the dist folder?
+      fs.writeFile("dist/index.html", htmlLiteral(employeesArray), err => { 
         if (err) {
           console.log(err);
         } else {
@@ -117,6 +111,7 @@ console.log("test")
       });
     }
   };
+
 console.log(employeesArray)
 addEmployee()
 

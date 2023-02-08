@@ -39,6 +39,7 @@
     <div class="container bg-dark-subtle rounded">
       <!-- CARDS -->
       <div class="row d-flex justify-content-center">
+
         <!-- MANAGER -->
         <div
           class="card col col-sm-4 border-secondary m-3 rounded"
@@ -51,8 +52,10 @@
             <div class="card-body">
               <h5 class="card-title">${data.manager}</h5>
               <p class="card-text">
-                ${data.name} <br />
-                ${data.email} <br />
+                ${data.name} 
+                <br/>
+                <a href='mailto: ${data.email}'> ${data.email}</a> 
+                 <br/>
                 ${data.officeNumber}
               </p>
             </div>
@@ -70,14 +73,16 @@
           <div class="card-body">
             <h5 class="card-title">${data.engineer}</h5>
             <p class="card-text">
-              ${data.name} <br />
-              ${data.email} <br />
-              <a href="www.github.com/${data.github}"> ${data.github) </a>
+              ${data.name} 
+              <br/>
+              <a href=mailto: ${data.email} > ${data.email}</a> 
+              <br/>
+              <a href="www.github.com/${data.github}"> ${data.github} </a>
             </p>
           </div>
         </div>
 
-        <!-- STUDENT -->
+        <!-- INTERN -->
         <div
           class="card col col-sm-4 border-secondary m-3 rounded"
           style="max-width: 18rem">
@@ -85,8 +90,10 @@
           <div class="card-body">
             <h5 class="card-title">${data.student}</h5>
             <p class="card-text">
-              ${data.name} <br />
-              ${data.email} <br />
+              ${data.name} 
+              <br/>
+              <a href=mailto: ${data.email} > ${data.email}</a>  
+              <br/>
               ${data.school}
             </p>
           </div>
@@ -94,7 +101,7 @@
 
       </div>
     </div>
-    
+
   </body>
 </html>
 
